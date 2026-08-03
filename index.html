@@ -394,6 +394,36 @@ Made with ❤️
 
 </button>
 
+<div id="assistant" class="assistant">
+
+    <div id="assistantPanel" class="assistant-panel glass">
+
+        <div class="assistant-header">
+
+            <span>Ece'nin Asistanı</span>
+
+            <button id="assistantClose" aria-label="Kapat">✕</button>
+
+        </div>
+
+        <div id="assistantMessages" class="assistant-messages"></div>
+
+        <form id="assistantForm" class="assistant-form">
+
+            <input id="assistantInput" type="text" placeholder="Ece hakkında bir şey sor..." autocomplete="off" />
+
+            <button type="submit" aria-label="Gönder">➤</button>
+
+        </form>
+
+    </div>
+
+    <button id="assistantToggle" class="assistant-toggle" aria-label="Asistanı aç">💬</button>
+
+</div>
+
+<script src="assistant.js"></script>
+
 <script src="script.js"></script>
 
 </body>
