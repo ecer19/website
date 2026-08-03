@@ -1,0 +1,7 @@
+{
+  "name": "ece-portfolio",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
