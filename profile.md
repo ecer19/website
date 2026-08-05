@@ -4,6 +4,7 @@ ben ece eroğul.19 mayıs 2009 tarihinde Manisada doğdum.bir erkek kardeşe sah
 İstanbul Erkek Lisesinde 11. sınıf öğrencisiyim.
 # İlgi Alanları
 girişimciliğe,sinemaya ve AI alanlarına ilgi duyuyorum.
+
 # Hobiler
 Boş zamanlarımda kitap okumayı,dizi ve film izlemeyi,arkadaşlarımla vakit geçirmeyi ve yeni yerler keşfetmeyi çok severim.
 # En Büyük Başarım

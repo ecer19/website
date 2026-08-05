@@ -207,6 +207,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* -----------------------------
+       Mobile Menu
+    ----------------------------- */
+
+    const menuToggle=document.getElementById("menuToggle");
+
+    const mobileNav=document.querySelector(".nav nav");
+
+    function closeMenu(){
+
+        menuToggle.classList.remove("open");
+
+        mobileNav.classList.remove("open");
+
+        menuToggle.setAttribute("aria-expanded","false");
+
+    }
+
+    menuToggle.addEventListener("click",()=>{
+
+        const isOpen=mobileNav.classList.toggle("open");
+
+        menuToggle.classList.toggle("open",isOpen);
+
+        menuToggle.setAttribute("aria-expanded",isOpen?"true":"false");
+
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link=>{
+
+        link.addEventListener("click",closeMenu);
+
+    });
+
+    document.addEventListener("click",(e)=>{
+
+        if(!mobileNav.classList.contains("open")) return;
+
+        if(!e.target.closest(".nav")){
+
+            closeMenu();
+
+        }
+
+    });
+
+    /* -----------------------------
        Hero Glow Animation
     ----------------------------- */
 
