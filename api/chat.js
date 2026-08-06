@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const BEDROCK_ENDPOINT = "https://bedrock-mantle.eu-central-1.api.aws/openai/v1/chat/completions";
+const BEDROCK_ENDPOINT = process.env.BEDROCK_API_URL || "https://bedrock-mantle.eu-central-1.api.aws/openai/v1/chat/completions";
 const MODEL_ID = "google.gemma-4-31b";
 
 const RULES = `Sen bu kişisel web sitesinin sahibi Ece Eroğul'u tanıtan bir asistansın.

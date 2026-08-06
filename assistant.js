@@ -5,11 +5,28 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* Mobil klavye açıldığında görünen alanı küçültür; asistan panelinin
+       klavyenin altında kalmaması için --kb-offset değişkenini güncelliyoruz */
+    if(window.visualViewport){
+
+        const vv = window.visualViewport;
+
+        const updateKeyboardOffset = () => {
+            const offset = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+            document.documentElement.style.setProperty("--kb-offset", offset + "px");
+        };
+
+        vv.addEventListener("resize", updateKeyboardOffset);
+        vv.addEventListener("scroll", updateKeyboardOffset);
+
+    }
+
     const toggle = document.getElementById("assistantToggle");
     const panel = document.getElementById("assistantPanel");
     const closeBtn = document.getElementById("assistantClose");
     const form = document.getElementById("assistantForm");
     const input = document.getElementById("assistantInput");
+    const sendBtn = form.querySelector("button[type='submit']");
     const messages = document.getElementById("assistantMessages");
 
     const suggestedQuestions = [
@@ -127,9 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         history.push({ role: "user", content: text });
 
-        const typingBubble = addMessage("...", "bot");
+        const typingBubble = addMessage("Cevap hazırlanıyor...", "bot");
 
         typingBubble.classList.add("typing");
+
+        sendBtn.disabled = true;
+        input.disabled = true;
 
         try {
 
@@ -144,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
             typingBubble.remove();
 
             if(!response.ok || !data.reply){
-                addMessage("Şu anda cevap veremiyorum, birazdan tekrar dener misin?", "bot");
+                addMessage("Şu anda cevap oluşturulamıyor. Lütfen birkaç saniye sonra tekrar dene.", "bot");
                 return;
             }
 
@@ -156,7 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             typingBubble.remove();
 
-            addMessage("Bağlantı sorunu yaşandı, birazdan tekrar dener misin?", "bot");
+            addMessage("Bağlantı sorunu yaşandı. Lütfen birkaç saniye sonra tekrar dene.", "bot");
+
+        } finally {
+
+            sendBtn.disabled = false;
+            input.disabled = false;
+            input.focus();
 
         }
 

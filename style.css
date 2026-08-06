@@ -23,6 +23,8 @@
 
 --radius:28px;
 
+--kb-offset:0px;
+
 }
 
 *{
@@ -224,6 +226,8 @@ padding:16px 24px;
 border-radius:999px;
 
 background:rgba(255,255,255,.55);
+
+-webkit-backdrop-filter:blur(22px);
 
 backdrop-filter:blur(22px);
 
@@ -470,6 +474,8 @@ margin-bottom:28px;
 
 background:rgba(255,255,255,.55);
 
+-webkit-backdrop-filter:blur(22px);
+
 backdrop-filter:blur(22px);
 
 border:1px solid rgba(255,255,255,.7);
@@ -505,6 +511,8 @@ linear-gradient(135deg,
 #b47cff);
 
 -webkit-background-clip:text;
+
+background-clip:text;
 
 -webkit-text-fill-color:transparent;
 
@@ -678,6 +686,76 @@ left:48%;
 opacity:.85;
 
 filter:blur(40px);
+
+}
+
+/*==============================*/
+
+.hero-monogram{
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:2;
+
+animation:monogramFloat 6s ease-in-out infinite;
+
+}
+
+.hero-monogram span{
+
+font-size:76px;
+
+font-weight:900;
+
+letter-spacing:-2px;
+
+background:linear-gradient(135deg,#7c3aed,#b47cff);
+
+-webkit-background-clip:text;
+
+background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+@keyframes monogramFloat{
+
+0%{
+
+transform:translate(-50%,-50%) translateY(0);
+
+}
+
+50%{
+
+transform:translate(-50%,-50%) translateY(-14px);
+
+}
+
+100%{
+
+transform:translate(-50%,-50%) translateY(0);
+
+}
 
 }/* =====================================================
    style.css
@@ -1030,6 +1108,8 @@ border-top:1px solid rgba(124,58,237,.08);
 
 background:rgba(255,255,255,.55);
 
+-webkit-backdrop-filter:blur(20px);
+
 backdrop-filter:blur(20px);
 
 }
@@ -1229,6 +1309,7 @@ will-change:transform;
 .contact-item:hover,
 .about-card:hover{
 
+-webkit-backdrop-filter:blur(28px);
 backdrop-filter:blur(28px);
 
 }
@@ -1456,6 +1537,20 @@ height:420px;
 
 }
 
+.hero-monogram{
+
+width:170px;
+
+height:170px;
+
+}
+
+.hero-monogram span{
+
+font-size:58px;
+
+}
+
 .hero-buttons{
 
 justify-content:center;
@@ -1478,6 +1573,8 @@ left:0;
 
 right:0;
 
+z-index:10;
+
 display:flex;
 
 flex-direction:column;
@@ -1486,13 +1583,15 @@ padding:24px;
 
 border-radius:24px;
 
-background:rgba(255,255,255,.92);
+background:#ffffff;
+
+-webkit-backdrop-filter:blur(22px);
 
 backdrop-filter:blur(22px);
 
 border:1px solid rgba(255,255,255,.7);
 
-box-shadow:0 20px 55px rgba(124,58,237,.18);
+box-shadow:0 20px 55px rgba(124,58,237,.25);
 
 opacity:0;
 
@@ -1591,6 +1690,20 @@ font-size:42px;
 .hero p{
 
 font-size:17px;
+
+}
+
+.hero-monogram{
+
+width:130px;
+
+height:130px;
+
+}
+
+.hero-monogram span{
+
+font-size:44px;
 
 }
 
@@ -1986,19 +2099,32 @@ flex-shrink:0;
 
 }
 
+.assistant-form button:disabled,
+.assistant-form input:disabled{
+
+opacity:.5;
+
+cursor:not-allowed;
+
+}
+
 @media(max-width:520px){
 
 .assistant{
 
 right:16px;
 
-bottom:88px;
+bottom:calc(88px + var(--kb-offset,0px));
 
 }
 
 .assistant-panel{
 
 width:calc(100vw - 32px);
+
+height:min(72dvh,600px);
+
+max-height:calc(100dvh - 110px - var(--kb-offset,0px));
 
 }
 
